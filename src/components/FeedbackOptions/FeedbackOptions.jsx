@@ -1,6 +1,6 @@
 // import React from "react";
 import PropTypes from 'prop-types';
-import './FeedbackOptions.css';
+import styles from './FeedbackOptions.module.css';
 
 export const FeedbackOptions = ({
   option,
@@ -9,16 +9,24 @@ export const FeedbackOptions = ({
   onHandleClickBad,
 }) => {
   return (
-    <div className="list">
+    <div className={styles.list}>
       <h1>Please leave feedback</h1>
-      <div className="list-item">
-        <button type="button" className="btn" onClick={onHandleClickGood}>
+      <div className={styles.listItem}>
+        <button
+          type="button"
+          className={styles.btn}
+          onClick={onHandleClickGood}
+        >
           Good
         </button>
-        <button type="button" className="btn" onClick={onHandleClickNeutral}>
+        <button
+          type="button"
+          className={styles.btn}
+          onClick={onHandleClickNeutral}
+        >
           Neutral
         </button>
-        <button type="button" className="btn" onClick={onHandleClickBad}>
+        <button type="button" className={styles.btn} onClick={onHandleClickBad}>
           Bad
         </button>
       </div>

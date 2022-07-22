@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
+import { Section } from './Section/Section';
+import { Notification } from './Notification/Notification';
 
 export class App extends Component {
   // static defaultProps = {
@@ -59,14 +61,16 @@ export class App extends Component {
           onHandleClickNeutral={this.handleClickNeutral}
           onHandleClickBad={this.handleClickBad}
         />
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={this.countTotalFeedback()}
-          positivePercentage={this.countPositiveFeedbackPercentage()}
-        >
-          {/* <h1>Statistics</h1>
+        <Section title="">
+          {this.countTotalFeedback() > 0 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            >
+              {/* <h1>Statistics</h1>
         <div className="text">
           <p> Good: {good}</p>
           <p> Neutral: {neutral}</p>
@@ -74,7 +78,12 @@ export class App extends Component {
           <p> Total: {this.countTotalFeedback()}</p>
           <p> Positive feedback: {this.countPositiveFeedbackPercentage()}%</p>
         </div> */}
-        </Statistics>
+            </Statistics>
+          ) : (
+            // <h3>No feedback given</h3>
+            <Notification message="There is no feedback" />
+          )}
+        </Section>
       </>
     );
   }
