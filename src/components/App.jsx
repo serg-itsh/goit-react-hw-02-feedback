@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { FeedbackList } from './FeedbackList/FeedbackList';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Statistics } from './Statistics/Statistics';
 
 export class App extends Component {
   // static defaultProps = {
@@ -52,23 +53,28 @@ export class App extends Component {
 
     return (
       <>
-        {/* <FeedbackList option={option} /> */}
-        <FeedbackList
+        <FeedbackOptions
           option={Object.keys(this.state)}
           onHandleClickGood={this.handleClickGood}
           onHandleClickNeutral={this.handleClickNeutral}
           onHandleClickBad={this.handleClickBad}
         />
-        {/* <Statistic> */}
-        <h1>Statistics</h1>
+        <Statistics
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          total={this.countTotalFeedback()}
+          positivePercentage={this.countPositiveFeedbackPercentage()}
+        >
+          {/* <h1>Statistics</h1>
         <div className="text">
           <p> Good: {good}</p>
           <p> Neutral: {neutral}</p>
           <p> Bad: {bad}</p>
           <p> Total: {this.countTotalFeedback()}</p>
           <p> Positive feedback: {this.countPositiveFeedbackPercentage()}%</p>
-        </div>
-        {/* </Statistic> */}
+        </div> */}
+        </Statistics>
       </>
     );
   }

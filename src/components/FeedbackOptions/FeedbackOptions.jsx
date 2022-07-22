@@ -1,8 +1,8 @@
 // import React from "react";
 import PropTypes from 'prop-types';
-import './FeedbackList.css';
+import './FeedbackOptions.css';
 
-export const FeedbackList = ({
+export const FeedbackOptions = ({
   option,
   onHandleClickGood,
   onHandleClickNeutral,
@@ -34,7 +34,7 @@ export const FeedbackList = ({
   );
 };
 
-FeedbackList.propTypes = {
+FeedbackOptions.propTypes = {
   option: PropTypes.arrayOf(PropTypes.string.isRequired),
   handleClick: PropTypes.func.isRequired,
 };
