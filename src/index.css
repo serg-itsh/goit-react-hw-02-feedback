@@ -19,7 +19,7 @@ code {
     monospace;
 }
 
-/* .text {
-  font-size: 14px;
-  margin: 0;
-} */
+.title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}

@@ -16,33 +16,43 @@ export class App extends Component {
   // handleClick = () => {
   //   this.setState({ good: this.state.counter + 1 });
   // }
-
-  handleClickGood = event => {
+  handleClick = event => {
     console.log(event.target);
-    // const { name } = event.target;
+    const { name } = event.target;
     this.setState(prevState => {
       return {
-        // [name]: preVal[name] + 1
-        good: prevState.good + 1,
+        [name]: prevState[name] + 1,
+        // good: prevState.good + 1,
       };
     });
   };
 
-  handleClickNeutral = event => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral + 1,
-      };
-    });
-  };
+  // handleClickGood = event => {
+  //   console.log(event.target);
+  //   // const { name } = event.target;
+  //   this.setState(prevState => {
+  //     return {
+  //       // [name]: preVal[name] + 1
+  //       good: prevState.good + 1,
+  //     };
+  //   });
+  // };
 
-  handleClickBad = event => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad + 1,
-      };
-    });
-  };
+  // handleClickNeutral = event => {
+  //   this.setState(prevState => {
+  //     return {
+  //       neutral: prevState.neutral + 1,
+  //     };
+  //   });
+  // };
+
+  // handleClickBad = event => {
+  //   this.setState(prevState => {
+  //     return {
+  //       bad: prevState.bad + 1,
+  //     };
+  //   });
+  // };
 
   countTotalFeedback = () =>
     Object.values(this.state).reduce((acc, el) => (acc += el), 0);
@@ -55,12 +65,16 @@ export class App extends Component {
 
     return (
       <>
-        <FeedbackOptions
-          option={Object.keys(this.state)}
-          onHandleClickGood={this.handleClickGood}
-          onHandleClickNeutral={this.handleClickNeutral}
-          onHandleClickBad={this.handleClickBad}
-        />
+        <Section title="Please leave the feedback" className="title">
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onHandleClick={this.handleClick}
+            // onHandleClickGood={this.handleClickGood}
+            // onHandleClickNeutral={this.handleClickNeutral}
+            // onHandleClickBad={this.handleClickBad}
+          />
+        </Section>
+
         <Section title="">
           {this.countTotalFeedback() > 0 ? (
             <Statistics
